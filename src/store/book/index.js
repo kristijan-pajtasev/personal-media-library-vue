@@ -68,6 +68,32 @@ const TodoStore = {
           context.commit("setIsLoadingBooks", false);
         }
       )
+    },
+    deleteBook(context, bookId) {
+      return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/book/${bookId}.json`, {
+          method: "delete",
+          headers: {
+            "Content-Type": 'application/json'
+          }
+        }
+      ).then(
+        async (res) => {
+          console.log("book deleted response")
+          // const data = await res.json();
+          // if (data === null) {
+          //   context.commit("setAllBooks", null)
+          // } else {
+          //   const books = Object.entries(data).map(([key, value]) => {
+          //     return {
+          //       ...value,
+          //       id: key
+          //     }
+          //   })
+          //   context.commit("setAllBooks", books)
+          // }
+          // context.commit("setIsLoadingBooks", false);
+        }
+      )
     }
   }
 }

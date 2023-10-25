@@ -4,6 +4,18 @@ export default {
   data() {
     return {
     }
+  },
+  methods: {
+    handleDelete(id) {
+      console.log("handle delete", id);
+      const _this = this;
+      this.$store.dispatch("book/deleteBook", id)
+          .then(
+              () => {
+                this.$store.dispatch("book/getBooks")
+              }
+          )
+    }
   }
 }
 </script>
@@ -14,6 +26,9 @@ export default {
       <li v-for="book in books" :key="book.id" class="BookList__listItem">
         <div>{{book.title}}</div>
         <div>{{ book.author }}</div>
+        <div>
+          <button type="button" @click="handleDelete(book.id)">Delete</button>
+        </div>
       </li>
     </ul>
   </div>
