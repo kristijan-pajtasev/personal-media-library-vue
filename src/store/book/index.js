@@ -42,6 +42,9 @@ const TodoStore = {
           context.commit("setIsLoadingBooks", false);
         }
       )
+    },
+    addBook(context, payload) {
+      console.log("add book action")
     }
   }
 }

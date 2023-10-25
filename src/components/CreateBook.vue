@@ -9,14 +9,19 @@ export default {
   mounted() {
     console.log("create book component")
   },
-  methods: {}
+  methods: {
+    handleSubmit() {
+      console.log("handleSubmit")
+      this.$store.dispatch("book/addBook")
+    }
+  }
 }
 </script>
 
 <template>
   <div>
     <div>add book</div>
-    <form>
+    <form @submit.prevent="handleSubmit">
       <div>
         <input v-model="title" placeholder="title" type="text"/>
       </div>
