@@ -14,8 +14,7 @@ export default {
   computed: {
     books() {
       const books = this.$store.getters["book/getAllBooks"];
-      console.log(books)
-      // return books
+
       if(!books) return;
 
       const author = this.author
