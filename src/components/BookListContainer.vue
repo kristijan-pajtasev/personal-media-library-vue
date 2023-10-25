@@ -25,7 +25,7 @@ export default {
     <div v-else>
       <div v-if="!books">No books data</div>
       <div v-else>
-        <BookList books="books"/>
+        <BookList :books="books"/>
       </div>
     </div>
   </div>
