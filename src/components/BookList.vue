@@ -9,5 +9,11 @@ export default {
 </script>
 
 <template>
-  <div>book list, {{books}}</div>
+  <div>
+    <ul>
+      <li v-for="book in books">
+        {{book.title}} - {{ book.author }}
+      </li>
+    </ul>
+  </div>
 </template>
