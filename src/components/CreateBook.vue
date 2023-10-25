@@ -51,6 +51,7 @@ export default {
 .CreateBook__title {
   color: #00bd7e;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .CreateBook__input {
