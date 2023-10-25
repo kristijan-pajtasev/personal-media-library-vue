@@ -24,14 +24,14 @@ export default {
 </script>
 
 <template>
-  <div>
-    <div>add book</div>
+  <div class="CreateBook">
+    <h2 class="CreateBook__title">Add a Book</h2>
     <form @submit.prevent="handleSubmit">
       <div>
-        <input v-model="title" placeholder="title" type="text"/>
+        <input class="CreateBook__input" v-model="title" placeholder="title" type="text"/>
       </div>
       <div>
-        <input v-model="author" placeholder="author" type="text"/>
+        <input class="CreateBook__input" v-model="author" placeholder="author" type="text"/>
       </div>
       <div>
         <button>add book</button>
@@ -41,4 +41,28 @@ export default {
 </template>
 
 <style scoped>
+.CreateBook {
+  max-width: 600px;
+  margin: 1rem auto;
+}
+
+.CreateBook__title {
+  color: #00bd7e;
+  margin-bottom: 1rem;
+}
+
+.CreateBook__input {
+  margin-bottom: 1rem;
+  border: thin solid #ccc;
+  border-radius: 0.3rem;
+  padding: 0.4rem 0.8rem;
+  outline: none;
+  width: 100%;
+}
+
+.CreateBook__input:focus {
+  margin-bottom: 1rem;
+  border: thin solid #00bd7e;
+  box-shadow: #ccc 5px 5px 5px;
+}
 </style>
