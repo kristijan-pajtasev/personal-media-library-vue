@@ -3,7 +3,14 @@ const TodoStore = {
   state() {
     return {}
   },
-  getters: {},
+  getters: {
+    getAllBooks(store) {
+      return store.books
+    },
+    isLoading(store) {
+      return store.loading
+    },
+  },
   mutations: {
     setAllBooks(context, payload) {
       context.books = payload;
