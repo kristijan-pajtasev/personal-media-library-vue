@@ -8,7 +8,7 @@ import BooksStore from './store/book';
 
 const store = createStore({
     modules: {
-        books: BooksStore
+        book: BooksStore
     }
 });
 

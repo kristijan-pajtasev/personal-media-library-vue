@@ -1,14 +1,41 @@
 const TodoStore = {
   namespaced: true,
   state() {
-    return {
+    return {}
+  },
+  getters: {},
+  mutations: {
+    setAllBooks(context, payload) {
+      context.books = payload;
+    },
+    setIsLoadingBooks(context, payload) {
+      context.loading = payload;
     }
   },
-  getters: {
-  },
-  mutations: {
-  },
   actions: {
+    getBooks(context) {
+      context.commit("setIsLoadingBooks", true);
+      fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/book.json`, {
+          method: "get",
+        }
+      ).then(
+        async (res) => {
+          const data = await res.json();
+          if (data === null) {
+            context.commit("setAllBooks", null)
+          } else {
+            const books = Object.entries(data).map(([key, value]) => {
+              return {
+                ...value,
+                id: key
+              }
+            })
+            context.commit("setAllBooks", books)
+          }
+          context.commit("setIsLoadingBooks", false);
+        }
+      )
+    }
   }
 }
 
