@@ -12,7 +12,10 @@ export default {
   methods: {
     handleSubmit() {
       console.log("handleSubmit")
-      this.$store.dispatch("book/addBook")
+      this.$store.dispatch("book/addBook", {
+        title: this.title,
+        author: this.author
+      })
     }
   }
 }

@@ -45,6 +45,30 @@ const TodoStore = {
     },
     addBook(context, payload) {
       console.log("add book action")
+      return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/book.json`, {
+          method: "post",
+          headers: {
+            "Content-Type": 'application/json'
+          },
+          body: JSON.stringify(payload)
+        }
+      ).then(
+        async (res) => {
+          const data = await res.json();
+          if (data === null) {
+            context.commit("setAllBooks", null)
+          } else {
+            const books = Object.entries(data).map(([key, value]) => {
+              return {
+                ...value,
+                id: key
+              }
+            })
+            context.commit("setAllBooks", books)
+          }
+          context.commit("setIsLoadingBooks", false);
+        }
+      )
     }
   }
 }
