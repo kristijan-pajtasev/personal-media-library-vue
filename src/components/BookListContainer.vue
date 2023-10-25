@@ -1,5 +1,7 @@
 <script>
+import BookList from './BookList.vue';
 export default {
+  components: {BookList},
   data() {
     return {}
   },
@@ -22,7 +24,9 @@ export default {
     <div v-if="loading">Loading data</div>
     <div v-else>
       <div v-if="!books">No books data</div>
-      <div v-else>{{ books }}</div>
+      <div v-else>
+        <BookList books="books"/>
+      </div>
     </div>
   </div>
 </template>
