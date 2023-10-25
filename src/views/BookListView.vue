@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import BookList from '../components/BookList.vue'
+import BookListContainer from '../components/BookListContainer.vue'
 </script>
 
 <template>
   <main>
-    <BookList />
+    <BookListContainer />
   </main>
 </template>
