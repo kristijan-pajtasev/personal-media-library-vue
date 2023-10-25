@@ -11,7 +11,7 @@ export default {
 <template>
   <div>
     <ul>
-      <li v-for="book in books">
+      <li v-for="book in books" :key="book.id">
         {{book.title}} - {{ book.author }}
       </li>
     </ul>
