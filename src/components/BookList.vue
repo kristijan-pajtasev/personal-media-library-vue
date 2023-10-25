@@ -3,8 +3,6 @@ export default {
   props: ["books"],
   data() {
     return {
-      author: "",
-      title: "",
     }
   }
 }
@@ -12,10 +10,6 @@ export default {
 
 <template>
   <div class="BookList">
-    <div class="BookList__filterContainer">
-      <input type="text" v-model="title" placeholder="title" />
-      <input type="text" v-model="author" placeholder="author" />
-    </div>
     <ul class="BookList__list">
       <li v-for="book in books" :key="book.id" class="BookList__listItem">
         <div>{{book.title}}</div>
@@ -46,18 +40,5 @@ export default {
 
 .BookList__listItem>* {
   flex: 1;
-}
-
-.BookList__filterContainer {
-  margin: 1rem auto;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  max-width: 480px;
-}
-
-.BookList__filterContainer>* {
-  flex: 1;
-
 }
 </style>
