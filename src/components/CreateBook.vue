@@ -34,7 +34,7 @@ export default {
         <input class="CreateBook__input" v-model="author" placeholder="author" type="text"/>
       </div>
       <div>
-        <button>add book</button>
+        <button class="CreateBook__button">Save</button>
       </div>
     </form>
   </div>
@@ -64,5 +64,17 @@ export default {
   margin-bottom: 1rem;
   border: thin solid #00bd7e;
   box-shadow: #ccc 5px 5px 5px;
+}
+
+.CreateBook__button {
+  background: #00bd7e;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  border: none;
+  width: 100%;
+  padding: 0.4rem 0.8rem;
+  font-weight: bold;
 }
 </style>
