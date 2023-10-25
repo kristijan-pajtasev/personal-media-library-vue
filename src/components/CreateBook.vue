@@ -28,10 +28,12 @@ export default {
     <h2 class="CreateBook__title">Add a Book</h2>
     <form @submit.prevent="handleSubmit">
       <div>
-        <input class="CreateBook__input" v-model="title" placeholder="title" type="text"/>
+        <label for="title" class="CreateBook__label">Title:</label>
+        <input id="title" class="CreateBook__input" v-model="title" placeholder="Title" type="text"/>
       </div>
       <div>
-        <input class="CreateBook__input" v-model="author" placeholder="author" type="text"/>
+        <label for="author" class="CreateBook__label">Author:</label>
+        <input id="author" class="CreateBook__input" v-model="author" placeholder="Author" type="text"/>
       </div>
       <div>
         <button class="CreateBook__button">Save</button>
@@ -55,7 +57,7 @@ export default {
   margin-bottom: 1rem;
   border: thin solid #ccc;
   border-radius: 0.3rem;
-  padding: 0.4rem 0.8rem;
+  padding: 0.4rem 0.4rem;
   outline: none;
   width: 100%;
 }
@@ -74,7 +76,11 @@ export default {
   border-radius: 0.5rem;
   border: none;
   width: 100%;
-  padding: 0.4rem 0.8rem;
+  padding: 0.4rem 0.4rem;
   font-weight: bold;
+}
+
+.CreateBook__label {
+  padding: 0.4rem;
 }
 </style>
