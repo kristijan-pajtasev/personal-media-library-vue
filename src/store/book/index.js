@@ -44,7 +44,6 @@ const TodoStore = {
       )
     },
     addBook(context, payload) {
-      console.log("add book action")
       return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/book.json`, {
           method: "post",
           headers: {

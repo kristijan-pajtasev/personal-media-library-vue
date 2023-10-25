@@ -13,7 +13,23 @@ export default {
   },
   computed: {
     books() {
-      return this.$store.getters['book/getAllBooks']
+      const books = this.$store.getters["book/getAllBooks"];
+      console.log(books)
+      // return books
+      if(!books) return;
+
+      const author = this.author
+      const title = this.title
+      const filteredBooks = books.filter(book => {
+        if(author.length > 0) {
+          if(!book.author.toLowerCase().includes(author.toLowerCase())) return false;
+        }
+        if(title.length > 0) {
+          if(!book.title.toLowerCase().includes(title.toLowerCase())) return false;
+        }
+        return true
+      })
+      return filteredBooks
     },
     loading() {
       return this.$store.getters['book/isLoading']
