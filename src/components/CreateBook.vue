@@ -15,6 +15,8 @@ export default {
       this.$store.dispatch("book/addBook", {
         title: this.title,
         author: this.author
+      }).then(() => {
+        this.$router.push({name: "book"})
       })
     }
   }
