@@ -3,10 +3,13 @@
     <div>login page</div>
   </div>
 </template>
+
 <script>
 export default {
   data() {
     return {}
   }
-}</script>
+}
+</script>
+
 <style scoped></style>
