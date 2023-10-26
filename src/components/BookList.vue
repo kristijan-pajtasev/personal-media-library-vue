@@ -45,8 +45,6 @@ export default {
         <div>{{ displayedText(book.author) }}</div>
         <div class="BookList__itemControls" v-if="hasUser">
           <button type="button" @click="handleEdit(book.id)">Edit</button>
-        </div>
-        <div class="BookList__itemControls" v-if="hasUser">
           <button type="button" @click="handleDelete(book.id)">Delete</button>
         </div>
       </li>
