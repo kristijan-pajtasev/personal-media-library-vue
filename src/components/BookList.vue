@@ -2,11 +2,7 @@
 export default {
   props: ["books"],
   data() {
-    return {
-    }
-  },
-  computed: {
-
+    return {}
   },
   methods: {
     handleDelete(id) {
@@ -17,6 +13,17 @@ export default {
                 this.$store.dispatch("book/getBooks")
               }
           )
+    },
+    displayedText(text) {
+      return text
+          .split(" ")
+          .map(word => {
+        if(["a", "an", "the"].includes(word.toLowerCase())) return word;
+        else {
+          return `${word[0].toUpperCase()}${word.slice(1)}`
+        }
+      })
+      .join(" ")
     }
   }
 }
@@ -26,8 +33,8 @@ export default {
   <div class="BookList">
     <ul class="BookList__list">
       <li v-for="book in books" :key="book.id" class="BookList__listItem">
-        <div>{{book.title}}</div>
-        <div>{{ book.author }}</div>
+        <div>{{ displayedText(book.title) }}</div>
+        <div>{{ displayedText(book.author) }}</div>
         <div>
           <button type="button" @click="handleDelete(book.id)">Delete</button>
         </div>
@@ -55,7 +62,7 @@ export default {
   border-bottom: thin solid hsla(160, 100%, 37%, 1)
 }
 
-.BookList__listItem>* {
+.BookList__listItem > * {
   flex: 1;
 }
 </style>
