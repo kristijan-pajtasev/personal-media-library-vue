@@ -6,11 +6,13 @@ import App from './App.vue'
 import router from './router'
 import BooksStore from './store/book';
 import UserStore from './store/user';
+import VinylStore from './store/vinyls';
 
 const store = createStore({
     modules: {
         book: BooksStore,
-        user: UserStore
+        user: UserStore,
+        vinyl: VinylStore
     }
 });
 
