@@ -1,5 +1,16 @@
-<script setup lang="ts">
+<script lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+
+export default {
+  mounted() {
+    const user = window.sessionStorage.getItem("UserData");
+    if(user) {
+      console.log(user)
+    } else {
+      console.log("not logged in")
+    }
+  }
+}
 </script>
 
 <template>
