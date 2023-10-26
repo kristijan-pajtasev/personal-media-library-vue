@@ -29,7 +29,7 @@ export default {
 
 <template>
   <div class="CreateBook">
-    <h2 class="CreateBook__title">Add a Book</h2>
+    <h2 class="CreateBook__title">Edit a Book</h2>
     <form @submit.prevent="handleSubmit">
       <div>
         <label for="title" class="CreateBook__label">Title:</label>
