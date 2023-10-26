@@ -1,4 +1,4 @@
-const TodoStore = {
+const BookStore = {
   namespaced: true,
   state() {
     return {}
@@ -98,4 +98,4 @@ const TodoStore = {
   }
 }
 
-export default TodoStore
+export default BookStore
