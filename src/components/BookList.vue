@@ -63,12 +63,13 @@ export default {
 }
 
 .BookList__listItem > * {
-  flex: 1;
+  flex: 3;
 }
 
 .BookList__listItem>*:last-of-type {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  flex: 2;
 }
 </style>
