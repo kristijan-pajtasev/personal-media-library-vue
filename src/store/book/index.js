@@ -25,7 +25,7 @@ const BookStore = {
   actions: {
     getBooks(context) {
       context.commit("setIsLoadingBooks", true);
-      fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/book.json`, {
+      return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/book.json`, {
           method: "get",
         }
       ).then(
