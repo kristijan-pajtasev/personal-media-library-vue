@@ -20,6 +20,7 @@ export default {
           )
     },
     displayedText(text) {
+      if(!text) return ""
       return text
           .split(" ")
           .map(word => {
