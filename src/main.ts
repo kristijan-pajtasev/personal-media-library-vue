@@ -5,10 +5,12 @@ import {createStore} from 'vuex'
 import App from './App.vue'
 import router from './router'
 import BooksStore from './store/book';
+import UserStore from './store/user';
 
 const store = createStore({
     modules: {
-        book: BooksStore
+        book: BooksStore,
+        user: UserStore
     }
 });
 
