@@ -44,7 +44,6 @@ const VinylStore = {
       )
     },
     addVinyl(context, payload) {
-      console.log(payload.user)
       return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/vinyl.json?auth=${payload.user.idToken}`, {
           method: "post",
           headers: {
