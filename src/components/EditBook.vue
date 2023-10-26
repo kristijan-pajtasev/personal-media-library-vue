@@ -26,14 +26,14 @@ export default {
   methods: {
     handleSubmit() {
       console.log("handleSubmit")
-      // this.$store.dispatch("book/editBook", {
-      //   title: this.title,
-      //   author: this.author,
-      //   id: this.id,
-      //   user: this.$store.getters["user/getUserData"]()
-      // }).then(() => {
-      //   this.$router.push({name: "book"})
-      // })
+      this.$store.dispatch("book/editBook", {
+        title: this.title,
+        author: this.author,
+        id: this.id,
+        user: this.$store.getters["user/getUserData"]()
+      }).then(() => {
+        this.$router.push({name: "book"})
+      })
     }
   }
 }

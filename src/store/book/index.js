@@ -76,6 +76,36 @@ const BookStore = {
         }
       )
     },
+    editBook(context, payload) {
+      console.log(payload.user)
+      return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/book/${payload.id}.json?auth=${payload.user.idToken}`, {
+          method: "put",
+          headers: {
+            "Content-Type": 'application/json'
+          },
+          body: JSON.stringify({
+            title: payload.title,
+            author: payload.author
+          })
+        }
+      ).then(
+        async (res) => {
+          const data = await res.json();
+          if (data === null) {
+            context.commit("setAllBooks", null)
+          } else {
+            const books = Object.entries(data).map(([key, value]) => {
+              return {
+                ...value,
+                id: key
+              }
+            })
+            context.commit("setAllBooks", books)
+          }
+          context.commit("setIsLoadingBooks", false);
+        }
+      )
+    },
     deleteBook(context, payload) {
       return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/book/${payload.bookId}.json?auth=${payload.user.idToken}`, {
           method: "delete",
