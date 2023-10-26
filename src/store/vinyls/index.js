@@ -5,7 +5,7 @@ const VinylStore = {
   },
   getters: {
     getAllVinyls(store) {
-      return store.books
+      return store.vinyls
     },
     isLoading(store) {
       return store.loading
@@ -13,7 +13,7 @@ const VinylStore = {
   },
   mutations: {
     setAllVinyls(context, payload) {
-      context.books = payload;
+      context.vinyls = payload;
     },
     setIsLoadingVinyls(context, payload) {
       context.loading = payload;
@@ -22,7 +22,7 @@ const VinylStore = {
   actions: {
     getVinyls(context) {
       context.commit("setIsLoadingVinyls", true);
-      fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/book.json`, {
+      fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/vinyl.json`, {
           method: "get",
         }
       ).then(
@@ -31,13 +31,13 @@ const VinylStore = {
           if (data === null) {
             context.commit("setAllVinyls", null)
           } else {
-            const books = Object.entries(data).map(([key, value]) => {
+            const vinyls = Object.entries(data).map(([key, value]) => {
               return {
                 ...value,
                 id: key
               }
             })
-            context.commit("setAllVinyls", books)
+            context.commit("setAllVinyls", vinyls)
           }
           context.commit("setIsLoadingVinyls", false);
         }
@@ -45,7 +45,7 @@ const VinylStore = {
     },
     addVinyl(context, payload) {
       console.log(payload.user)
-      return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/book.json?auth=${payload.user.idToken}`, {
+      return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/vinyl.json?auth=${payload.user.idToken}`, {
           method: "post",
           headers: {
             "Content-Type": 'application/json'
@@ -61,20 +61,20 @@ const VinylStore = {
           if (data === null) {
             context.commit("setAllVinyls", null)
           } else {
-            const books = Object.entries(data).map(([key, value]) => {
+            const vinyls = Object.entries(data).map(([key, value]) => {
               return {
                 ...value,
                 id: key
               }
             })
-            context.commit("setAllVinyls", books)
+            context.commit("setAllVinyls", vinyls)
           }
           context.commit("setIsLoadingVinyls", false);
         }
       )
     },
     deleteVinyl(context, payload) {
-      return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/book/${payload.bookId}.json?auth=${payload.user.idToken}`, {
+      return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/vinyl/${payload.vinylId}.json?auth=${payload.user.idToken}`, {
           method: "delete",
           headers: {
             "Content-Type": 'application/json'
@@ -82,18 +82,18 @@ const VinylStore = {
         }
       ).then(
         async (res) => {
-          console.log("book deleted response")
+          console.log("vinyl deleted response")
           // const data = await res.json();
           // if (data === null) {
           //   context.commit("setAllVinyls", null)
           // } else {
-          //   const books = Object.entries(data).map(([key, value]) => {
+          //   const vinyls = Object.entries(data).map(([key, value]) => {
           //     return {
           //       ...value,
           //       id: key
           //     }
           //   })
-          //   context.commit("setAllVinyls", books)
+          //   context.commit("setAllVinyls", vinyls)
           // }
           // context.commit("setIsLoadingVinyls", false);
         }
