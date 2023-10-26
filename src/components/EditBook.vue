@@ -8,6 +8,9 @@ export default {
   },
   mounted() {
     console.log("create book component")
+    console.log()
+    const {id} = this.$route.params;
+    console.log(id);
   },
   methods: {
     handleSubmit() {
