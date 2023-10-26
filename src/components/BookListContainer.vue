@@ -44,8 +44,8 @@ export default {
       <div v-if="!books">No books data</div>
       <div v-else>
         <div class="BookListContainer__filterContainer">
-          <input type="text" v-model="title" placeholder="title" />
-          <input type="text" v-model="author" placeholder="author" />
+          <input class="BookListContainer__input" type="text" v-model="title" placeholder="title" />
+          <input class="BookListContainer__input" type="text" v-model="author" placeholder="author" />
         </div>
         <BookList :books="books"/>
       </div>
@@ -65,6 +65,19 @@ export default {
 
 .BookListContainer__filterContainer>* {
   flex: 1;
+}
 
+.BookListContainer__input {
+  margin-bottom: 1rem;
+  border: thin solid #ccc;
+  border-radius: 0.3rem;
+  padding: 0.4rem 0.4rem;
+  outline: none;
+}
+
+.BookListContainer__input:focus {
+  margin-bottom: 1rem;
+  border: thin solid #00bd7e;
+  box-shadow: #ccc 5px 5px 5px;
 }
 </style>
