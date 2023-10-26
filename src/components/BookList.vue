@@ -5,10 +5,12 @@ export default {
     return {
     }
   },
+  computed: {
+
+  },
   methods: {
     handleDelete(id) {
       console.log("handle delete", id);
-      const _this = this;
       this.$store.dispatch("book/deleteBook", id)
           .then(
               () => {
