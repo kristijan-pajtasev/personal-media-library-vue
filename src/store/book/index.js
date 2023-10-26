@@ -44,12 +44,16 @@ const BookStore = {
       )
     },
     addBook(context, payload) {
-      return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/book.json`, {
+      console.log(payload.user)
+      return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/book.json?auth=${payload.user.idToken}`, {
           method: "post",
           headers: {
             "Content-Type": 'application/json'
           },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({
+            title: payload.title,
+            author: payload.author
+          })
         }
       ).then(
         async (res) => {
@@ -69,8 +73,8 @@ const BookStore = {
         }
       )
     },
-    deleteBook(context, bookId) {
-      return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/book/${bookId}.json`, {
+    deleteBook(context, payload) {
+      return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/book/${payload.bookId}.json?auth=${payload.user.idToken}`, {
           method: "delete",
           headers: {
             "Content-Type": 'application/json'

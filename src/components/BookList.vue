@@ -7,7 +7,7 @@ export default {
   methods: {
     handleDelete(id) {
       console.log("handle delete", id);
-      this.$store.dispatch("book/deleteBook", id)
+      this.$store.dispatch("book/deleteBook", {bookId: id, user: this.$store.getters["user/getUserData"]()})
           .then(
               () => {
                 this.$store.dispatch("book/getBooks")

@@ -14,7 +14,8 @@ export default {
       console.log("handleSubmit")
       this.$store.dispatch("book/addBook", {
         title: this.title,
-        author: this.author
+        author: this.author,
+        user: this.$store.getters["user/getUserData"]()
       }).then(() => {
         this.$router.push({name: "book"})
       })
