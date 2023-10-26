@@ -9,6 +9,11 @@ export default {
     } else {
       console.log("not logged in")
     }
+  },
+  computed: {
+    hasUser() {
+      return this.$store.getters['user/getUserData']()
+    }
   }
 }
 </script>
@@ -22,7 +27,7 @@ export default {
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/login">Log In</RouterLink>
+        <RouterLink to="/login" v-if="!hasUser">Log In</RouterLink>
 <!--        <RouterLink to="/about">About</RouterLink>-->
       </nav>
     </div>
