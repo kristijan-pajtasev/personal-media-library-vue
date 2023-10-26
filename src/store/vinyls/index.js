@@ -55,22 +55,6 @@ const VinylStore = {
             artist: payload.artist
           })
         }
-      ).then(
-        async (res) => {
-          const data = await res.json();
-          if (data === null) {
-            context.commit("setAllVinyls", null)
-          } else {
-            const vinyls = Object.entries(data).map(([key, value]) => {
-              return {
-                ...value,
-                id: key
-              }
-            })
-            context.commit("setAllVinyls", vinyls)
-          }
-          context.commit("setIsLoadingVinyls", false);
-        }
       )
     },
     deleteVinyl(context, payload) {

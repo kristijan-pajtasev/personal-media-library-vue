@@ -24,6 +24,7 @@ export default {
           .split(" ")
           .map(word => {
         if(["a", "an", "at", "and"].includes(word.toLowerCase())) return word;
+        else if(word.replace(/\s+/, "").length === 0) return word
         else {
           return `${word[0].toUpperCase()}${word.slice(1)}`
         }
