@@ -77,6 +77,7 @@ export default {
 
 .BookList__listItem>.BookList__itemControls {
   display: flex;
+  gap: 0.5rem;
   flex-direction: row;
   justify-content: flex-end;
   flex: 2;
