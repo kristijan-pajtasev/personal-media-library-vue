@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import EditBook from '../components/EditBook.vue'
+import EditBook from '../components/EditVinyl.vue'
 </script>
 
 <template>
   <main>
-    <EditBook />
+    <EditVinyl />
   </main>
 </template>
