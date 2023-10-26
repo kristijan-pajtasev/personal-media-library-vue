@@ -5,7 +5,7 @@ export default {
   mounted() {
     const user = window.sessionStorage.getItem("UserData");
     if(user) {
-      console.log(user)
+      this.$store.dispatch("user/setUserData", JSON.parse(user));
     } else {
       console.log("not logged in")
     }

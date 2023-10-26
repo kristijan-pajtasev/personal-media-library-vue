@@ -32,10 +32,14 @@ const UserStore = {
         async res => {
           const data = await res.json();
           console.log(data)
+          window.sessionStorage.setItem("UserData", JSON.stringify(data));
           context.commit("setUserData", data)
           return data;
         }
       )
+    },
+    setUserData(context, payload) {
+      context.commit("setUserData", payload);
     }
   }
 }
