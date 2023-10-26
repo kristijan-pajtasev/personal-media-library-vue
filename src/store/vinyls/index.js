@@ -1,5 +1,3 @@
-export default VinylStore
-
 const VinylStore = {
   namespaced: true,
   state() {
@@ -103,3 +101,5 @@ const VinylStore = {
     }
   }
 }
+
+export default VinylStore
