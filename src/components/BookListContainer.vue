@@ -44,8 +44,8 @@ export default {
       <div v-if="!books">No books data</div>
       <div v-else>
         <div class="BookListContainer__filterContainer">
-          <input class="BookListContainer__input" type="text" v-model="title" placeholder="title" />
-          <input class="BookListContainer__input" type="text" v-model="author" placeholder="author" />
+          <input class="BookListContainer__input" type="text" v-model="title" placeholder="Title" />
+          <input class="BookListContainer__input" type="text" v-model="author" placeholder="Author" />
         </div>
         <BookList :books="books"/>
       </div>
