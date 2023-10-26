@@ -7,21 +7,33 @@ export default {
     }
   },
   mounted() {
-    console.log("create book component")
-    console.log()
     const {id} = this.$route.params;
-    console.log(id);
+    const books = this.$store.getters["book/getAllBooks"];
+    if(!books) {
+      this.$store.dispatch("book/getBooks").then(() => {
+        const book = this.$store.getters["book/getBookById"](id);
+        this.author = book.author;
+        this.title = book.title;
+        this.id = book.id;
+      })
+    } else {
+      const book = this.$store.getters["book/getBookById"](id);
+      this.author = book.author;
+      this.title = book.title;
+      this.id = book.id;
+    }
   },
   methods: {
     handleSubmit() {
       console.log("handleSubmit")
-      this.$store.dispatch("book/addBook", {
-        title: this.title,
-        author: this.author,
-        user: this.$store.getters["user/getUserData"]()
-      }).then(() => {
-        this.$router.push({name: "book"})
-      })
+      // this.$store.dispatch("book/editBook", {
+      //   title: this.title,
+      //   author: this.author,
+      //   id: this.id,
+      //   user: this.$store.getters["user/getUserData"]()
+      // }).then(() => {
+      //   this.$router.push({name: "book"})
+      // })
     }
   }
 }
