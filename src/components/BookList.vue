@@ -11,13 +11,15 @@ export default {
   },
   methods: {
     handleDelete(id) {
-      console.log("handle delete", id);
       this.$store.dispatch("book/deleteBook", {bookId: id, user: this.$store.getters["user/getUserData"]()})
           .then(
               () => {
                 this.$store.dispatch("book/getBooks")
               }
           )
+    },
+    handleEdit(id) {
+      this.$router.push({name: "editBook", params: {id}})
     },
     displayedText(text) {
       if(!text) return ""
@@ -41,6 +43,9 @@ export default {
       <li v-for="book in books" :key="book.id" class="BookList__listItem">
         <div>{{ displayedText(book.title) }}</div>
         <div>{{ displayedText(book.author) }}</div>
+        <div class="BookList__itemControls" v-if="hasUser">
+          <button type="button" @click="handleEdit(book.id)">Edit</button>
+        </div>
         <div class="BookList__itemControls" v-if="hasUser">
           <button type="button" @click="handleDelete(book.id)">Delete</button>
         </div>
