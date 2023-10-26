@@ -65,4 +65,10 @@ export default {
 .BookList__listItem > * {
   flex: 1;
 }
+
+.BookList__listItem>*:last-of-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
 </style>
