@@ -20,7 +20,7 @@ export default {
           )
     },
     handleEdit(id) {
-      this.$router.push({name: "editBook", params: {id}})
+      this.$router.push({name: "editVinyl", params: {id}})
     },
     displayedText(text) {
       return text
