@@ -19,6 +19,9 @@ export default {
               }
           )
     },
+    handleEdit(id) {
+      this.$router.push({name: "editBook", params: {id}})
+    },
     displayedText(text) {
       return text
           .split(" ")
@@ -42,7 +45,8 @@ export default {
         <div>{{ displayedText(vinyl.artist) }}</div>
         <div>{{ displayedText(vinyl.album) }}</div>
         <div class="VinylList__itemControls" v-if="hasUser">
-          <button type="button" @click="handleDelete(vinyl.id)">Delete</button>
+          <button type="button" class="VinylList__editButton" @click="handleEdit(vinyl.id)">Edit</button>
+          <button type="button" class="VinylList__deleteButton" @click="handleDelete(vinyl.id)">Delete</button>
         </div>
       </li>
     </ul>
@@ -60,22 +64,27 @@ export default {
   padding: 0;
 }
 
-.VinylList__listItem {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  border-bottom: thin solid hsla(160, 100%, 37%, 1)
-}
-
-.VinylList__listItem > * {
-  flex: 3;
-}
-
 .VinylList__listItem>.VinylList__itemControls {
   display: flex;
+  gap: 0.5rem;
   flex-direction: row;
   justify-content: flex-end;
   flex: 2;
+}
+
+.VinylList__editButton {
+  background: none;
+  border: none;
+  color: #00bd7e;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.VinylList__deleteButton {
+  background: none;
+  border: none;
+  color: #BD003F;
+  cursor: pointer;
+  font-weight: bold;
 }
 </style>
