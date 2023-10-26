@@ -24,7 +24,7 @@ export default {
         <a class="Home__link" href="/vinyl">Vinyls</a>
       </div>
     </div>
-    <div @click="goToVinyl">
+    <div @click="goToBooks">
       <div>
         <img class="Home__image" src="/images/book.png" alt="book icon image"/>
       </div>
