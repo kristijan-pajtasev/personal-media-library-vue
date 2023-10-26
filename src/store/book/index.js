@@ -10,6 +10,9 @@ const BookStore = {
     isLoading(store) {
       return store.loading
     },
+    getBookById: (store) => (id) => {
+      return store.books.find(book => book.id === id)
+    },
   },
   mutations: {
     setAllBooks(context, payload) {
