@@ -4,6 +4,11 @@ export default {
   data() {
     return {}
   },
+  computed: {
+    hasUser() {
+      return this.$store.getters['user/getUserData']()
+    }
+  },
   methods: {
     handleDelete(id) {
       console.log("handle delete", id);
@@ -35,7 +40,7 @@ export default {
       <li v-for="book in books" :key="book.id" class="BookList__listItem">
         <div>{{ displayedText(book.title) }}</div>
         <div>{{ displayedText(book.author) }}</div>
-        <div>
+        <div class="BookList__itemControls" v-if="hasUser">
           <button type="button" @click="handleDelete(book.id)">Delete</button>
         </div>
       </li>
@@ -66,7 +71,7 @@ export default {
   flex: 3;
 }
 
-.BookList__listItem>*:last-of-type {
+.BookList__listItem>.BookList__itemControls {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

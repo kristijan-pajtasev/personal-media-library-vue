@@ -2,7 +2,7 @@ const UserStore = {
   namespaced: true,
   state() {
     return {
-      user: {}
+      user: null
     }
   },
   getters: {
