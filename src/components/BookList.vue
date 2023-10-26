@@ -44,7 +44,7 @@ export default {
         <div>{{ displayedText(book.title) }}</div>
         <div>{{ displayedText(book.author) }}</div>
         <div class="BookList__itemControls" v-if="hasUser">
-          <button type="button" @click="handleEdit(book.id)">Edit</button>
+          <button type="button" class="BookList__editButton" @click="handleEdit(book.id)">Edit</button>
           <button type="button" @click="handleDelete(book.id)">Delete</button>
         </div>
       </li>
@@ -81,5 +81,13 @@ export default {
   flex-direction: row;
   justify-content: flex-end;
   flex: 2;
+}
+
+.BookList__editButton {
+  background: none;
+  border: none;
+  color: #00bd7e;
+  cursor: pointer;
+  font-weight: bold;
 }
 </style>
