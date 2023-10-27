@@ -2,8 +2,9 @@
 export default {
   data() {
     return {
-      title: "",
-      author: "",
+      artist: "",
+      album: "",
+      id: ""
     }
   },
   mounted() {
@@ -12,6 +13,7 @@ export default {
     if(!vinyls) {
       this.$store.dispatch("vinyl/getVinyls").then(() => {
         const vinyl = this.$store.getters["vinyl/getVinylById"](id);
+        console.log(vinyl)
         this.artist = vinyl.artist;
         this.album = vinyl.album;
         this.id = vinyl.id;

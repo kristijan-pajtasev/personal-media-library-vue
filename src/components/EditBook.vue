@@ -4,6 +4,7 @@ export default {
     return {
       title: "",
       author: "",
+      id: ""
     }
   },
   mounted() {
@@ -25,7 +26,6 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log("handleSubmit")
       this.$store.dispatch("book/editBook", {
         title: this.title,
         author: this.author,
