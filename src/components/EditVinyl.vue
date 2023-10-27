@@ -12,14 +12,14 @@ export default {
     if(!vinyls) {
       this.$store.dispatch("vinyl/getVinyls").then(() => {
         const vinyl = this.$store.getters["vinyl/getVinylById"](id);
-        this.author = vinyl.author;
-        this.title = vinyl.title;
+        this.artist = vinyl.artist;
+        this.album = vinyl.album;
         this.id = vinyl.id;
       })
     } else {
       const vinyl = this.$store.getters["vinyl/getVinylById"](id);
-      this.author = vinyl.author;
-      this.title = vinyl.title;
+      this.$store = vinyl.author;
+      this.album = vinyl.album;
       this.id = vinyl.id;
     }
   },
@@ -44,12 +44,12 @@ export default {
     <h2 class="CreateVinyl__title">Edit a Vinyl</h2>
     <form @submit.prevent="handleSubmit">
       <div>
-        <label for="title" class="CreateVinyl__label">Title:</label>
-        <input id="title" class="CreateVinyl__input" v-model="title" placeholder="Title" type="text"/>
+        <label for="album" class="CreateVinyl__label">Album:</label>
+        <input id="album" class="CreateVinyl__input" v-model="album" placeholder="Album" type="text"/>
       </div>
       <div>
-        <label for="author" class="CreateVinyl__label">Author:</label>
-        <input id="author" class="CreateVinyl__input" v-model="author" placeholder="Author" type="text"/>
+        <label for="artist" class="CreateVinyl__label">Artist:</label>
+        <input id="artist" class="CreateVinyl__input" v-model="artist" placeholder="Artist" type="text"/>
       </div>
       <div>
         <button class="CreateVinyl__button">Save</button>

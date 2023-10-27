@@ -25,7 +25,7 @@ const VinylStore = {
   actions: {
     getVinyls(context) {
       context.commit("setIsLoadingVinyls", true);
-      fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/vinyl.json`, {
+      return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/vinyl.json`, {
           method: "get",
         }
       ).then(
