@@ -63,4 +63,10 @@ export default {
   font-weight: bold;
   font-size: 1.2rem;
 }
+
+@media screen and (max-width: 480px) {
+  .Home__menuContainer {
+    flex-direction: column;
+  }
+}
 </style>
