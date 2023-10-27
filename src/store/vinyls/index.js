@@ -10,6 +10,9 @@ const VinylStore = {
     isLoading(store) {
       return store.loading
     },
+    getVinylById: (store) => (id) => {
+      return (store.vinyls || []).find(vinyl => vinyl.id === id)
+    },
   },
   mutations: {
     setAllVinyls(context, payload) {
