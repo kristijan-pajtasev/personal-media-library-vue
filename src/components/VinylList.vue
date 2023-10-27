@@ -64,6 +64,14 @@ export default {
   padding: 0;
 }
 
+.VinylList__listItem {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: thin solid hsla(160, 100%, 37%, 0.3);
+}
+
 .VinylList__listItem>.VinylList__itemControls {
   display: flex;
   gap: 0.5rem;
