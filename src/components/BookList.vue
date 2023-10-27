@@ -98,4 +98,11 @@ export default {
   cursor: pointer;
   font-weight: bold;
 }
+
+@media screen and (max-width: 480px) {
+  .BookList__listItem {
+    flex-direction: column;
+    gap: 0.5rem
+  }
+}
 </style>

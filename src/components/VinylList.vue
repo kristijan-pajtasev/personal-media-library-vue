@@ -95,4 +95,11 @@ export default {
   cursor: pointer;
   font-weight: bold;
 }
+
+@media screen and (max-width: 480px) {
+  .VinylList__listItem {
+    flex-direction: column;
+    gap: 0.5rem
+  }
+}
 </style>
