@@ -80,4 +80,16 @@ export default {
   border: thin solid #00bd7e;
   box-shadow: #ccc 5px 5px 5px;
 }
+
+@media screen and (max-width: 480px) {
+  .VinylListContainer__filterContainer {
+    flex-direction: column;
+    gap: 0.5rem
+  }
+
+  .VinylListContainer__input {
+    margin-bottom: 0;
+    width: 100%;
+  }
+}
 </style>
