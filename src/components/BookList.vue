@@ -1,40 +1,72 @@
-<script lang="ts">
-export default {
-  props: ["books"],
-  data() {
-    return {}
-  },
-  computed: {
-    hasUser() {
-      return this.$store.getters['user/getUserData']()
-    }
-  },
-  methods: {
-    handleDelete(id) {
-      this.$store.dispatch("book/deleteBook", {bookId: id, user: this.$store.getters["user/getUserData"]()})
-          .then(
-              () => {
-                this.$store.dispatch("book/getBooks")
-              }
-          )
-    },
-    handleEdit(id) {
-      this.$router.push({name: "editBook", params: {id}})
-    },
-    displayedText(text) {
-      if(!text) return ""
-      return text
-          .split(" ")
-          .map(word => {
-        if(["a", "an"].includes(word.toLowerCase())) return word;
+<script setup lang="ts">
+import {ref, computed, defineProps} from 'vue'
+
+const props = defineProps({"books": Array<{ author: string, id: string, title: string }>});
+
+// functions
+function handleDelete(id) {
+  this.$store.dispatch("book/deleteBook", {bookId: id, user: this.$store.getters["user/getUserData"]()})
+      .then(
+          () => {
+            this.$store.dispatch("book/getBooks")
+          }
+      )
+}
+
+function handleEdit(id) {
+  this.$router.push({name: "editBook", params: {id}})
+}
+
+function displayedText(text) {
+  if (!text) return ""
+  return text
+      .split(" ")
+      .map(word => {
+        if (["a", "an"].includes(word.toLowerCase())) return word;
         else {
           return `${word[0].toUpperCase()}${word.slice(1)}`
         }
       })
       .join(" ")
-    }
-  }
 }
+
+const books = ref(props.books);
+// export default {
+//   props: ["books"],
+//   data() {
+//     return {}
+//   },
+//   computed: {
+//     hasUser() {
+//       return this.$store.getters['user/getUserData']()
+//     }
+//   },
+//   methods: {
+//     handleDelete(id) {
+//       this.$store.dispatch("book/deleteBook", {bookId: id, user: this.$store.getters["user/getUserData"]()})
+//           .then(
+//               () => {
+//                 this.$store.dispatch("book/getBooks")
+//               }
+//           )
+//     },
+//     handleEdit(id) {
+//       this.$router.push({name: "editBook", params: {id}})
+//     },
+//     displayedText(text) {
+//       if(!text) return ""
+//       return text
+//           .split(" ")
+//           .map(word => {
+//         if(["a", "an"].includes(word.toLowerCase())) return word;
+//         else {
+//           return `${word[0].toUpperCase()}${word.slice(1)}`
+//         }
+//       })
+//       .join(" ")
+//     }
+//   }
+// }
 </script>
 
 <template>
@@ -75,7 +107,7 @@ export default {
   flex: 3;
 }
 
-.BookList__listItem>.BookList__itemControls {
+.BookList__listItem > .BookList__itemControls {
   display: flex;
   gap: 0.5rem;
   flex-direction: row;
