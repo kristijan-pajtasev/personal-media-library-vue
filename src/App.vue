@@ -51,7 +51,7 @@ nav {
   width: 100%;
   font-size: 12px;
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 0;
 }
 
 nav a.router-link-exact-active {
@@ -66,6 +66,7 @@ nav a {
   display: inline-block;
   padding: 0 1rem;
   border-left: 1px solid var(--color-border);
+  font-size: 1.3rem;
 }
 
 nav a:first-of-type {
