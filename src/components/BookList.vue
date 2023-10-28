@@ -10,16 +10,16 @@ const router = useRouter();
 
 // functions
 function handleDelete(id) {
-  this.$store.dispatch("book/deleteBook", {bookId: id, user: this.$store.getters["user/getUserData"]()})
+  store.dispatch("book/deleteBook", {bookId: id, user: store.getters["user/getUserData"]()})
       .then(
           () => {
-            this.$store.dispatch("book/getBooks")
+            store.dispatch("book/getBooks")
           }
       )
 }
 
 function handleEdit(id) {
-  this.$router.push({name: "editBook", params: {id}})
+  router.push({name: "editBook", params: {id}})
 }
 
 function displayedText(text) {
