@@ -9,7 +9,7 @@ const store = useStore()
 const router = useRouter();
 
 // functions
-function handleDelete(id) {
+function handleDelete(id: string) {
   store.dispatch("book/deleteBook", {bookId: id, user: store.getters["user/getUserData"]()})
       .then(
           () => {
@@ -18,11 +18,11 @@ function handleDelete(id) {
       )
 }
 
-function handleEdit(id) {
+function handleEdit(id: string) {
   router.push({name: "editBook", params: {id}})
 }
 
-function displayedText(text) {
+function displayedText(text: string) {
   if (!text) return ""
   return text
       .split(" ")
