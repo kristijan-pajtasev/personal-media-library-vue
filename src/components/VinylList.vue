@@ -38,8 +38,7 @@ function handleEdit(id: string) {
 }
 
 const hasUser = computed(() => {
-  return store.getters['user/getUserData']()
-  // return false;
+  return store.getters['user/getUserData']();
 })
 
 const vinyls = ref(props.vinyls);

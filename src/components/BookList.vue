@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import {ref, computed, defineProps} from 'vue'
+import {useStore} from "vuex";
 
 const props = defineProps({"books": Array<{ author: string, id: string, title: string }>});
+
+const store = useStore()
 
 // functions
 function handleDelete(id) {
@@ -29,6 +32,10 @@ function displayedText(text) {
       })
       .join(" ")
 }
+
+const hasUser = computed(() => {
+  return store.getters['user/getUserData']();
+})
 
 const books = ref(props.books);
 // export default {
