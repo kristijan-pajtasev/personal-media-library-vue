@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import {ref, computed, defineProps} from 'vue'
 import {useStore} from "vuex";
+import {useRouter} from "vue-router";
 
 const props = defineProps({"books": Array<{ author: string, id: string, title: string }>});
 
 const store = useStore()
+const router = useRouter();
 
 // functions
 function handleDelete(id) {
