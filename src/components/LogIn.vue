@@ -13,33 +13,56 @@
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  // type inference enabled
-  props: {},
-  mounted() {
-  },
-  data() {
-    return {
-      email: "",
-      password: ""
-    }
-  },
-  computed: {},
-  methods: {
-    submitHandler() {
-      const router = this.$router;
-      this.$store.dispatch("user/logIn", {
-        email: this.email,
-        password: this.password
+<script setup lang="ts">
+
+import {ref, computed, defineProps} from 'vue'
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+
+const store = useStore();
+const router = useRouter();
+
+const email = ref("");
+const password = ref("");
+
+// functions
+function submitHandler() {
+      store.dispatch("user/logIn", {
+        email: email.value,
+        password: password.value
       }).then(
           () => {
             router.push({name: "home"})
           }
       )
     }
-  }
-}
+
+// export default {
+//   // type inference enabled
+//   props: {},
+//   mounted() {
+//   },
+//   data() {
+//     return {
+//       email: "",
+//       password: ""
+//     }
+//   },
+//   computed: {},
+//   methods: {
+//     submitHandler() {
+//       const router = this.$router;
+//       this.$store.dispatch("user/logIn", {
+//         email: this.email,
+//         password: this.password
+//       }).then(
+//           () => {
+//             router.push({name: "home"})
+//           }
+//       )
+//     }
+//   }
+// }
 </script>
 
 <style scoped>
