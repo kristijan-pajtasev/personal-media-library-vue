@@ -27,44 +27,7 @@ const hasUser = computed(() => {
   // return false;
 })
 
-const vinyls = ref(props.vinyls)
-// export default {
-// props: ["vinyls"],
-// data() {
-//   return {}
-// },
-// computed: {
-//   hasUser() {
-//     return this.$store.getters['user/getUserData']()
-//   }
-// },
-// methods: {
-//   handleDelete(id) {
-//     console.log("handle delete", id);
-//     this.$store.dispatch("vinyl/deleteVinyl", {vinylId: id, user: this.$store.getters["user/getUserData"]()})
-//         .then(
-//             () => {
-//               this.$store.dispatch("vinyl/getVinyls")
-//             }
-//         )
-//   },
-//   handleEdit(id) {
-//     this.$router.push({name: "editVinyl", params: {id}})
-//   },
-//   displayedText(text) {
-//     return text
-//         .split(" ")
-//         .map(word => {
-//       if(["a", "an", "at", "and"].includes(word.toLowerCase())) return word;
-//       else if(word.replace(/\s+/, "").length === 0) return word
-//       else {
-//         return `${word[0].toUpperCase()}${word.slice(1)}`
-//       }
-//     })
-//     .join(" ")
-//   }
-// }
-// }
+const vinyls = ref(props.vinyls);
 </script>
 
 <template>
