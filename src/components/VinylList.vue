@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import {ref, computed, defineProps} from 'vue'
 import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 
-const props = defineProps({"vinyls": Array});
+const props = defineProps({"vinyls": Array<{album: string, id: string, artist: string}>});
 
 const store = useStore()
+const router = useRouter();
 
 // functions
 function displayedText(text?: string) {
@@ -19,6 +21,20 @@ function displayedText(text?: string) {
         }
       })
       .join(" ")
+}
+
+function handleDelete(id) {
+  console.log("handle delete", id);
+  store.dispatch("vinyl/deleteVinyl", {vinylId: id, user: this.$store.getters["user/getUserData"]()})
+      .then(
+          () => {
+            store.dispatch("vinyl/getVinyls")
+          }
+      )
+}
+
+function handleEdit(id) {
+  router.push({name: "editVinyl", params: {id}})
 }
 
 const hasUser = computed(() => {
