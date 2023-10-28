@@ -1,13 +1,13 @@
-<script setup>
+<script setup lang="ts">
 import {ref, computed, defineProps} from 'vue'
 import { useStore } from 'vuex';
 
-const props = defineProps(["vinyls"]);
+const props = defineProps({"vinyls": Array});
 
 const store = useStore()
 
 // functions
-function displayedText(text) {
+function displayedText(text?: string) {
   if (!text) return ""
   return text
       .split(" ")
@@ -22,7 +22,6 @@ function displayedText(text) {
 }
 
 const hasUser = computed(() => {
-  console.log("run has user")
   return store.getters['user/getUserData']()
   // return false;
 })

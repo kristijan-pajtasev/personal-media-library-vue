@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import VinylList from './VinylList.vue';
 export default {
   components: {VinylList},
