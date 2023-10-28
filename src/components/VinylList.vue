@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from 'vue'
+import {ref, computed} from 'vue'
+
 const msg = 'Hello!'
 
 // functions
@@ -8,7 +9,7 @@ function log() {
 }
 
 function displayedText(text) {
-  if(!text) return ""
+  if (!text) return ""
   return text
       .split(" ")
       .map(word => {
@@ -21,43 +22,49 @@ function displayedText(text) {
       .join(" ")
 }
 
+const hasUser = computed(() => {
+  console.log("run has user")
+  // return this.$store.getters['user/getUserData']()
+  return false;
+})
+
 const vinyls = ref([{album: "123"}])
 // export default {
-  // props: ["vinyls"],
-  // data() {
-  //   return {}
-  // },
-  // computed: {
-  //   hasUser() {
-  //     return this.$store.getters['user/getUserData']()
-  //   }
-  // },
-  // methods: {
-  //   handleDelete(id) {
-  //     console.log("handle delete", id);
-  //     this.$store.dispatch("vinyl/deleteVinyl", {vinylId: id, user: this.$store.getters["user/getUserData"]()})
-  //         .then(
-  //             () => {
-  //               this.$store.dispatch("vinyl/getVinyls")
-  //             }
-  //         )
-  //   },
-  //   handleEdit(id) {
-  //     this.$router.push({name: "editVinyl", params: {id}})
-  //   },
-  //   displayedText(text) {
-  //     return text
-  //         .split(" ")
-  //         .map(word => {
-  //       if(["a", "an", "at", "and"].includes(word.toLowerCase())) return word;
-  //       else if(word.replace(/\s+/, "").length === 0) return word
-  //       else {
-  //         return `${word[0].toUpperCase()}${word.slice(1)}`
-  //       }
-  //     })
-  //     .join(" ")
-  //   }
-  // }
+// props: ["vinyls"],
+// data() {
+//   return {}
+// },
+// computed: {
+//   hasUser() {
+//     return this.$store.getters['user/getUserData']()
+//   }
+// },
+// methods: {
+//   handleDelete(id) {
+//     console.log("handle delete", id);
+//     this.$store.dispatch("vinyl/deleteVinyl", {vinylId: id, user: this.$store.getters["user/getUserData"]()})
+//         .then(
+//             () => {
+//               this.$store.dispatch("vinyl/getVinyls")
+//             }
+//         )
+//   },
+//   handleEdit(id) {
+//     this.$router.push({name: "editVinyl", params: {id}})
+//   },
+//   displayedText(text) {
+//     return text
+//         .split(" ")
+//         .map(word => {
+//       if(["a", "an", "at", "and"].includes(word.toLowerCase())) return word;
+//       else if(word.replace(/\s+/, "").length === 0) return word
+//       else {
+//         return `${word[0].toUpperCase()}${word.slice(1)}`
+//       }
+//     })
+//     .join(" ")
+//   }
+// }
 // }
 </script>
 
@@ -95,7 +102,7 @@ const vinyls = ref([{album: "123"}])
   border-bottom: thin solid hsla(160, 100%, 37%, 0.3);
 }
 
-.VinylList__listItem>.VinylList__itemControls {
+.VinylList__listItem > .VinylList__itemControls {
   display: flex;
   gap: 0.5rem;
   flex-direction: row;
