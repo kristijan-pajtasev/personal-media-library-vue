@@ -3,10 +3,10 @@
     <h2 class="LogIn__title">Log In</h2>
     <form @submit.prevent="submitHandler">
       <div>
-        <input class="LogIn__input" type="text" placeholder="email" v-model="email"/>
+        <input class="LogIn__input" type="text" placeholder="Email" v-model="email"/>
       </div>
       <div>
-        <input class="LogIn__input" type="text" placeholder="password" v-model="password"/>
+        <input class="LogIn__input" type="password" placeholder="Password" v-model="password"/>
       </div>
       <button class="LogIn__button">Log In</button>
     </form>
