@@ -23,9 +23,9 @@ function displayedText(text?: string) {
       .join(" ")
 }
 
-function handleDelete(id) {
+function handleDelete(id: string) {
   console.log("handle delete", id);
-  store.dispatch("vinyl/deleteVinyl", {vinylId: id, user: this.$store.getters["user/getUserData"]()})
+  store.dispatch("vinyl/deleteVinyl", {vinylId: id, user: store.getters["user/getUserData"]()})
       .then(
           () => {
             store.dispatch("vinyl/getVinyls")
@@ -33,7 +33,7 @@ function handleDelete(id) {
       )
 }
 
-function handleEdit(id) {
+function handleEdit(id: string) {
   router.push({name: "editVinyl", params: {id}})
 }
 
