@@ -101,6 +101,10 @@ const vinyls = ref(props.vinyls)
   border-bottom: thin solid hsla(160, 100%, 37%, 0.3);
 }
 
+.VinylList__listItem>* {
+  flex: 3;
+}
+
 .VinylList__listItem > .VinylList__itemControls {
   display: flex;
   gap: 0.5rem;
