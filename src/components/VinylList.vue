@@ -1,7 +1,8 @@
 <script setup>
-import {ref, computed} from 'vue'
+import {ref, computed, defineProps} from 'vue'
 
 const msg = 'Hello!'
+const props = defineProps(["vinyls"]);
 
 // functions
 function log() {
@@ -28,7 +29,7 @@ const hasUser = computed(() => {
   return false;
 })
 
-const vinyls = ref([{album: "123"}])
+const vinyls = ref(props.vinyls)
 // export default {
 // props: ["vinyls"],
 // data() {
