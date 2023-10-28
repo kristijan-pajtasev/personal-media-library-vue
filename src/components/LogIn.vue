@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 
-import {ref, computed, defineProps} from 'vue'
+import {ref} from 'vue'
 import {useStore} from 'vuex';
 import {useRouter} from 'vue-router';
 
