@@ -20,7 +20,7 @@ export default {
       })
     } else {
       const vinyl = this.$store.getters["vinyl/getVinylById"](id);
-      this.$store = vinyl.author;
+      this.artist = vinyl.artist;
       this.album = vinyl.album;
       this.id = vinyl.id;
     }
