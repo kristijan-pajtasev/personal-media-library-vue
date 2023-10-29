@@ -9,7 +9,7 @@
         <input class="LogIn__input" type="password" placeholder="Password" v-model="password"/>
       </div>
       <button class="LogIn__button">Log In</button>
-      <div>{{error}}</div>
+      <div class="LogIn__error" v-if="!!error">{{error}}</div>
     </form>
   </div>
 </template>
@@ -29,6 +29,7 @@ const error = ref("");
 
 // functions
 function submitHandler() {
+  error.value = "";
   store.dispatch("user/logIn", {
     email: email.value,
     password: password.value
@@ -81,5 +82,11 @@ function submitHandler() {
   width: 100%;
   padding: 0.4rem 0.4rem;
   font-weight: bold;
+}
+
+.LogIn__error {
+  color: #bd003f;
+  margin-top: 0.5rem;
+  text-align: center;
 }
 </style>
