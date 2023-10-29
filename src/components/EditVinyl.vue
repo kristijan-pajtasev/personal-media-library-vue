@@ -14,22 +14,37 @@ const id = ref("");
 onMounted(() => {
   console.log("on mounted")
   const {id} = route.params;
-    const vinyls = store.getters["vinyl/getAllVinyls"];
-    if(!vinyls) {
-      store.dispatch("vinyl/getVinyls").then(() => {
-        const vinyl = store.getters["vinyl/getVinylById"](id);
-        console.log(vinyl)
-        artist.value = vinyl.artist;
-        album.value = vinyl.album;
-        id.value = vinyl.id;
-      })
-    } else {
+  const vinyls = store.getters["vinyl/getAllVinyls"];
+  if (!vinyls) {
+    store.dispatch("vinyl/getVinyls").then(() => {
       const vinyl = store.getters["vinyl/getVinylById"](id);
+      console.log(vinyl)
       artist.value = vinyl.artist;
       album.value = vinyl.album;
       id.value = vinyl.id;
-    }
-})
+    })
+  } else {
+    const vinyl = store.getters["vinyl/getVinylById"](id);
+    artist.value = vinyl.artist;
+    album.value = vinyl.album;
+    id.value = vinyl.id;
+  }
+});
+
+// functions
+function handleSubmit() {
+  console.log("handleSubmit")
+  store.dispatch("vinyl/editVinyl", {
+    title: this.title,
+    author: this.author,
+    id: this.id,
+    user: store.getters["user/getUserData"]()
+  }).then(() => {
+    router.push({name: "vinyl"})
+  })
+}
+
+
 // export default {
 //   data() {
 //     return {
