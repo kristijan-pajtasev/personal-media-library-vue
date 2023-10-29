@@ -35,9 +35,9 @@ onMounted(() => {
 function handleSubmit() {
   console.log("handleSubmit")
   store.dispatch("vinyl/editVinyl", {
-    title: this.title,
-    author: this.author,
-    id: this.id,
+    artist: artist.value,
+    album: album.value,
+    id: id.value,
     user: store.getters["user/getUserData"]()
   }).then(() => {
     router.push({name: "vinyl"})

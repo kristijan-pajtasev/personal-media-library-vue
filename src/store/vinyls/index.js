@@ -84,6 +84,36 @@ const VinylStore = {
           // context.commit("setIsLoadingVinyls", false);
         }
       )
+    },
+    editVinyl(context, payload) {
+      console.log(payload.user)
+      return fetch(`${import.meta.env.VITE_FIREBASE_DB_URL}/vinyl/${payload.id}.json?auth=${payload.user.idToken}`, {
+          method: "put",
+          headers: {
+            "Content-Type": 'application/json'
+          },
+          body: JSON.stringify({
+            artist: payload.artist,
+            album: payload.album
+          })
+        }
+      ).then(
+        async (res) => {
+          const data = await res.json();
+          if (data === null) {
+            context.commit("setAllVinyls", null)
+          } else {
+            const vinyls = Object.entries(data).map(([key, value]) => {
+              return {
+                ...value,
+                id: key
+              }
+            })
+            context.commit("setAllVinyls", vinyls)
+          }
+          context.commit("setIsLoadingVinyls", false);
+        }
+      )
     }
   }
 }
