@@ -9,6 +9,7 @@
         <input class="LogIn__input" type="password" placeholder="Password" v-model="password"/>
       </div>
       <button class="LogIn__button">Log In</button>
+      <div>{{error}}</div>
     </form>
   </div>
 </template>
@@ -24,6 +25,7 @@ const router = useRouter();
 
 const email = ref("");
 const password = ref("");
+const error = ref("");
 
 // functions
 function submitHandler() {
@@ -33,6 +35,10 @@ function submitHandler() {
   }).then(
       () => {
         router.push({name: "home"})
+      },
+      (errorResponse: {type: string}) => {
+        console.log(errorResponse);
+        error.value = "Error logging in";
       }
   )
 }

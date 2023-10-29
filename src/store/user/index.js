@@ -30,8 +30,10 @@ const UserStore = {
         })
       }).then(
         async res => {
+          console.log("response status: ", res.ok)
+          if(!res.ok) throw new Error({ type: "LOGIN_FAILED" });
+
           const data = await res.json();
-          console.log(data)
           window.sessionStorage.setItem("UserData", JSON.stringify(data));
           context.commit("setUserData", data)
           return data;
