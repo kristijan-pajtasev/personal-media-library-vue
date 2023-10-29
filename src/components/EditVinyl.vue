@@ -13,11 +13,11 @@ const id = ref("");
 
 onMounted(() => {
   console.log("on mounted")
-  const {id} = route.params;
+  const itemId = route.params.id;
   const vinyls = store.getters["vinyl/getAllVinyls"];
   if (!vinyls) {
     store.dispatch("vinyl/getVinyls").then(() => {
-      const vinyl = store.getters["vinyl/getVinylById"](id);
+      const vinyl = store.getters["vinyl/getVinylById"](itemId);
       console.log(vinyl)
       artist.value = vinyl.artist;
       album.value = vinyl.album;
