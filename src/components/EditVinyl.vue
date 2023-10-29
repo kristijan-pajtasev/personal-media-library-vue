@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref, computed, defineProps, onMounted} from 'vue'
+import {ref, onMounted} from 'vue'
 import {useStore} from 'vuex';
 import {useRouter, useRoute} from 'vue-router';
 
