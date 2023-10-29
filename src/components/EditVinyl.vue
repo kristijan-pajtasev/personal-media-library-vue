@@ -1,44 +1,75 @@
-<script lang="ts">
-export default {
-  data() {
-    return {
-      artist: "",
-      album: "",
-      id: ""
-    }
-  },
-  mounted() {
-    const {id} = this.$route.params;
-    const vinyls = this.$store.getters["vinyl/getAllVinyls"];
+<script setup lang="ts">
+import {ref, computed, defineProps, onMounted} from 'vue'
+import {useStore} from 'vuex';
+import {useRouter, useRoute} from 'vue-router';
+
+const store = useStore();
+const router = useRouter();
+const route = useRoute();
+
+const artist = ref("");
+const album = ref("");
+const id = ref("");
+
+onMounted(() => {
+  console.log("on mounted")
+  const {id} = route.params;
+    const vinyls = store.getters["vinyl/getAllVinyls"];
     if(!vinyls) {
-      this.$store.dispatch("vinyl/getVinyls").then(() => {
-        const vinyl = this.$store.getters["vinyl/getVinylById"](id);
+      store.dispatch("vinyl/getVinyls").then(() => {
+        const vinyl = store.getters["vinyl/getVinylById"](id);
         console.log(vinyl)
-        this.artist = vinyl.artist;
-        this.album = vinyl.album;
-        this.id = vinyl.id;
+        artist.value = vinyl.artist;
+        album.value = vinyl.album;
+        id.value = vinyl.id;
       })
     } else {
-      const vinyl = this.$store.getters["vinyl/getVinylById"](id);
-      this.artist = vinyl.artist;
-      this.album = vinyl.album;
-      this.id = vinyl.id;
+      const vinyl = store.getters["vinyl/getVinylById"](id);
+      artist.value = vinyl.artist;
+      album.value = vinyl.album;
+      id.value = vinyl.id;
     }
-  },
-  methods: {
-    handleSubmit() {
-      console.log("handleSubmit")
-      this.$store.dispatch("vinyl/editVinyl", {
-        title: this.title,
-        author: this.author,
-        id: this.id,
-        user: this.$store.getters["user/getUserData"]()
-      }).then(() => {
-        this.$router.push({name: "vinyl"})
-      })
-    }
-  }
-}
+})
+// export default {
+//   data() {
+//     return {
+//       artist: "",
+//       album: "",
+//       id: ""
+//     }
+//   },
+//   mounted() {
+//     const {id} = this.$route.params;
+//     const vinyls = this.$store.getters["vinyl/getAllVinyls"];
+//     if(!vinyls) {
+//       this.$store.dispatch("vinyl/getVinyls").then(() => {
+//         const vinyl = this.$store.getters["vinyl/getVinylById"](id);
+//         console.log(vinyl)
+//         this.artist = vinyl.artist;
+//         this.album = vinyl.album;
+//         this.id = vinyl.id;
+//       })
+//     } else {
+//       const vinyl = this.$store.getters["vinyl/getVinylById"](id);
+//       this.artist = vinyl.artist;
+//       this.album = vinyl.album;
+//       this.id = vinyl.id;
+//     }
+//   },
+//   methods: {
+//     handleSubmit() {
+//       console.log("handleSubmit")
+//       this.$store.dispatch("vinyl/editVinyl", {
+//         title: this.title,
+//         author: this.author,
+//         id: this.id,
+//         user: this.$store.getters["user/getUserData"]()
+//       }).then(() => {
+//         this.$router.push({name: "vinyl"})
+//       })
+//     }
+//   }
+// }
 </script>
 
 <template>
