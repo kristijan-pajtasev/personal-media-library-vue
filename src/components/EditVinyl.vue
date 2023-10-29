@@ -43,48 +43,6 @@ function handleSubmit() {
     router.push({name: "vinyl"})
   })
 }
-
-
-// export default {
-//   data() {
-//     return {
-//       artist: "",
-//       album: "",
-//       id: ""
-//     }
-//   },
-//   mounted() {
-//     const {id} = this.$route.params;
-//     const vinyls = this.$store.getters["vinyl/getAllVinyls"];
-//     if(!vinyls) {
-//       this.$store.dispatch("vinyl/getVinyls").then(() => {
-//         const vinyl = this.$store.getters["vinyl/getVinylById"](id);
-//         console.log(vinyl)
-//         this.artist = vinyl.artist;
-//         this.album = vinyl.album;
-//         this.id = vinyl.id;
-//       })
-//     } else {
-//       const vinyl = this.$store.getters["vinyl/getVinylById"](id);
-//       this.artist = vinyl.artist;
-//       this.album = vinyl.album;
-//       this.id = vinyl.id;
-//     }
-//   },
-//   methods: {
-//     handleSubmit() {
-//       console.log("handleSubmit")
-//       this.$store.dispatch("vinyl/editVinyl", {
-//         title: this.title,
-//         author: this.author,
-//         id: this.id,
-//         user: this.$store.getters["user/getUserData"]()
-//       }).then(() => {
-//         this.$router.push({name: "vinyl"})
-//       })
-//     }
-//   }
-// }
 </script>
 
 <template>
