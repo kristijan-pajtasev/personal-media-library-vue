@@ -1,39 +1,42 @@
-<script lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+<script setup lang="ts">
+import {RouterLink, RouterView} from 'vue-router'
+import {ref, computed, onMounted} from 'vue'
+import {useStore} from 'vuex';
+import {useRouter} from 'vue-router';
 
-export default {
-  mounted() {
-    const user = window.sessionStorage.getItem("UserData");
-    if(user) {
-      this.$store.dispatch("user/setUserData", JSON.parse(user));
-    } else {
-      console.log("not logged in")
-    }
-  },
-  computed: {
-    hasUser() {
-      return this.$store.getters['user/getUserData']()
-    }
+const store = useStore();
+const router = useRouter();
+
+onMounted(() => {
+  const user = window.sessionStorage.getItem("UserData");
+  if (user) {
+    store.dispatch("user/setUserData", JSON.parse(user));
+  } else {
+    console.log("not logged in")
   }
-}
+})
+
+const hasUser = computed(() => {
+  return store.getters['user/getUserData']()
+})
 </script>
 
 <template>
   <header>
-<!--    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />-->
+    <!--    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />-->
 
     <div class="wrapper">
-<!--      <HelloWorld msg="You did it!" />-->
+      <!--      <HelloWorld msg="You did it!" />-->
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/login" v-if="!hasUser">Log In</RouterLink>
-<!--        <RouterLink to="/about">About</RouterLink>-->
+        <!--        <RouterLink to="/about">About</RouterLink>-->
       </nav>
     </div>
   </header>
 
-  <RouterView />
+  <RouterView/>
 </template>
 
 <style scoped>
