@@ -17,7 +17,6 @@ onMounted(() => {
 // computed
 const vinylData = computed(() => {
   const vinyls: Array<{ id: string, artist: string, album: string }> = store.getters["vinyl/getAllVinyls"];
-  console.log(artist.value, album.value)
   if (!vinyls) return;
 
   const filteredVinyls = vinyls.filter(vinyl => {

@@ -1,4 +1,10 @@
-const UserStore = {
+import { type Module} from 'vuex';
+
+interface UserState {
+    user: null|{}
+}
+
+const UserStore: Module<UserState, {}> = {
   namespaced: true,
   state() {
     return {
@@ -11,7 +17,7 @@ const UserStore = {
     }
   },
   mutations: {
-    setUserData(context, payload) {
+    setUserData(context: UserState, payload) {
       context.user = payload;
     }
   },
@@ -31,7 +37,7 @@ const UserStore = {
       }).then(
         async res => {
           console.log("response status: ", res.ok)
-          if(!res.ok) throw new Error({ type: "LOGIN_FAILED" });
+          if(!res.ok) throw new Error("LOGIN_FAILED");
 
           const data = await res.json();
           window.sessionStorage.setItem("UserData", JSON.stringify(data));
