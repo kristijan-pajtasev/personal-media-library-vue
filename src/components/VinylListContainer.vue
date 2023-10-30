@@ -1,40 +1,42 @@
-<script lang="ts">
+<script setup lang="ts">
 import VinylList from './VinylList.vue';
-export default {
-  components: {VinylList},
-  data() {
-    return {
-      author: "",
-      title: ""
-    }
-  },
-  mounted() {
-    this.$store.dispatch('vinyl/getVinyls')
-  },
-  computed: {
-    vinyls() {
-      const vinyls = this.$store.getters["vinyl/getAllVinyls"];
+import {ref, computed, onMounted} from 'vue'
+import {useStore} from 'vuex';
+import {useRouter} from 'vue-router';
 
-      if(!vinyls) return;
+const store = useStore();
+const router = useRouter();
 
-      const author = this.author
-      const title = this.title
-      const filteredVinyls = vinyls.filter(vinyl => {
-        if(author.length > 0) {
-          if(!vinyl.author.toLowerCase().includes(author.toLowerCase())) return false;
-        }
-        if(title.length > 0) {
-          if(!vinyl.title.toLowerCase().includes(title.toLowerCase())) return false;
-        }
-        return true
-      })
-      return filteredVinyls
-    },
-    loading() {
-      return this.$store.getters['vinyl/isLoading']
+const author = ref("");
+const title = ref("");
+
+onMounted(() => {
+  store.dispatch('vinyl/getVinyls')
+});
+
+// computed
+const vinyls = computed(() => {
+  const vinyls = store.getters["vinyl/getAllVinyls"];
+
+  if (!vinyls) return;
+
+  // const _author = author
+  // const _title = title
+  const filteredVinyls = vinyls.filter(vinyl => {
+    if (author.value.length > 0) {
+      if (!vinyl.author.toLowerCase().includes(author.value.toLowerCase())) return false;
     }
-  }
-}
+    if (title.value.length > 0) {
+      if (!vinyl.title.toLowerCase().includes(title.value.toLowerCase())) return false;
+    }
+    return true
+  })
+  return filteredVinyls
+});
+
+const loading = computed(() => {
+  return store.getters['vinyl/isLoading']
+});
 </script>
 
 <template>
@@ -44,8 +46,8 @@ export default {
       <div v-if="!vinyls">No vinyls data</div>
       <div v-else>
         <div class="VinylListContainer__filterContainer">
-          <input class="VinylListContainer__input" type="text" v-model="title" placeholder="Title" />
-          <input class="VinylListContainer__input" type="text" v-model="author" placeholder="Author" />
+          <input class="VinylListContainer__input" type="text" v-model="title" placeholder="Title"/>
+          <input class="VinylListContainer__input" type="text" v-model="author" placeholder="Author"/>
         </div>
         <VinylList :vinyls="vinyls"/>
       </div>
@@ -63,7 +65,7 @@ export default {
   max-width: 480px;
 }
 
-.VinylListContainer__filterContainer>* {
+.VinylListContainer__filterContainer > * {
   flex: 1;
 }
 
