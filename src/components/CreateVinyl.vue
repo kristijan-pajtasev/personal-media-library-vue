@@ -19,30 +19,6 @@ function handleSubmit() {
     router.push({name: "vinyl"})
   })
 }
-
-// export default {
-//   data() {
-//     return {
-//       album: "",
-//       artist: "",
-//     }
-//   },
-//   mounted() {
-//     console.log("create vinyl component")
-//   },
-//   methods: {
-//     handleSubmit() {
-//       console.log("handleSubmit")
-//       this.$store.dispatch("vinyl/addVinyl", {
-//         album: this.album,
-//         artist: this.artist,
-//         user: this.$store.getters["user/getUserData"]()
-//       }).then(() => {
-//         this.$router.push({name: "vinyl"})
-//       })
-//     }
-//   }
-// }
 </script>
 
 <template>
