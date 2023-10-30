@@ -14,6 +14,29 @@ onMounted(() => {
   store.dispatch('book/getBooks')
 });
 
+// computed
+const books = computed(() => {
+  const books = store.getters["book/getAllBooks"];
+
+  if (!books) return;
+
+  const filteredBooks = books.filter(book => {
+    if (author.value.length > 0) {
+      if (!book.author.toLowerCase().includes(author.value.toLowerCase())) return false;
+    }
+    if (title.value.length > 0) {
+      if (!book.title.toLowerCase().includes(title.value.toLowerCase())) return false;
+    }
+    return true
+  })
+  return filteredBooks
+})
+//     loading() {
+//       return this.$store.getters['book/isLoading']
+//     }
+//   }
+
+
 // export default {
 //   components: {BookList},
 //   data() {
@@ -58,8 +81,8 @@ onMounted(() => {
       <div v-if="!books">No books data</div>
       <div v-else>
         <div class="BookListContainer__filterContainer">
-          <input class="BookListContainer__input" type="text" v-model="title" placeholder="Title" />
-          <input class="BookListContainer__input" type="text" v-model="author" placeholder="Author" />
+          <input class="BookListContainer__input" type="text" v-model="title" placeholder="Title"/>
+          <input class="BookListContainer__input" type="text" v-model="author" placeholder="Author"/>
         </div>
         <BookList :books="books"/>
       </div>
@@ -77,7 +100,7 @@ onMounted(() => {
   max-width: 480px;
 }
 
-.BookListContainer__filterContainer>* {
+.BookListContainer__filterContainer > * {
   flex: 1;
 }
 
