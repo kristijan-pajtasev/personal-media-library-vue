@@ -10,6 +10,10 @@ const router = useRouter();
 const author = ref("");
 const title = ref("");
 
+onMounted(() => {
+  store.dispatch('book/getBooks')
+});
+
 // export default {
 //   components: {BookList},
 //   data() {
