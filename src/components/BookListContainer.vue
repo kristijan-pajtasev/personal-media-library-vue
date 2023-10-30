@@ -35,43 +35,6 @@ const books = computed(() => {
 const loading = computed(() => {
   return store.getters['book/isLoading']
 });
-
-
-// export default {
-//   components: {BookList},
-//   data() {
-//     return {
-//       author: "",
-//       title: ""
-//     }
-//   },
-//   mounted() {
-//     this.$store.dispatch('book/getBooks')
-//   },
-//   computed: {
-//     books() {
-//       const books = this.$store.getters["book/getAllBooks"];
-//
-//       if(!books) return;
-//
-//       const author = this.author
-//       const title = this.title
-//       const filteredBooks = books.filter(book => {
-//         if(author.length > 0) {
-//           if(!book.author.toLowerCase().includes(author.toLowerCase())) return false;
-//         }
-//         if(title.length > 0) {
-//           if(!book.title.toLowerCase().includes(title.toLowerCase())) return false;
-//         }
-//         return true
-//       })
-//       return filteredBooks
-//     },
-//     loading() {
-//       return this.$store.getters['book/isLoading']
-//     }
-//   }
-// }
 </script>
 
 <template>
