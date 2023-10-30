@@ -1,27 +1,37 @@
-<script lang="ts">
-export default {
-  data() {
-    return {
-      album: "",
-      artist: "",
-    }
-  },
-  mounted() {
-    console.log("create vinyl component")
-  },
-  methods: {
-    handleSubmit() {
-      console.log("handleSubmit")
-      this.$store.dispatch("vinyl/addVinyl", {
-        album: this.album,
-        artist: this.artist,
-        user: this.$store.getters["user/getUserData"]()
-      }).then(() => {
-        this.$router.push({name: "vinyl"})
-      })
-    }
-  }
-}
+<script setup lang="ts">
+import {ref} from 'vue'
+import {useStore} from 'vuex';
+import {useRouter} from 'vue-router';
+
+const store = useStore();
+const router = useRouter();
+
+const album = ref("");
+const artist = ref("");
+
+// export default {
+//   data() {
+//     return {
+//       album: "",
+//       artist: "",
+//     }
+//   },
+//   mounted() {
+//     console.log("create vinyl component")
+//   },
+//   methods: {
+//     handleSubmit() {
+//       console.log("handleSubmit")
+//       this.$store.dispatch("vinyl/addVinyl", {
+//         album: this.album,
+//         artist: this.artist,
+//         user: this.$store.getters["user/getUserData"]()
+//       }).then(() => {
+//         this.$router.push({name: "vinyl"})
+//       })
+//     }
+//   }
+// }
 </script>
 
 <template>
