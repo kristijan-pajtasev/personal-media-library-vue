@@ -12,8 +12,8 @@ const artist = ref("");
 function handleSubmit() {
   console.log("handleSubmit")
   store.dispatch("vinyl/addVinyl", {
-    album: this.album,
-    artist: this.artist,
+    album: album.value,
+    artist: artist.value,
     user: store.getters["user/getUserData"]()
   }).then(() => {
     router.push({name: "vinyl"})
