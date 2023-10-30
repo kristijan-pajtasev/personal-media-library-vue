@@ -7,32 +7,32 @@ import {useRouter} from 'vue-router';
 const store = useStore();
 const router = useRouter();
 
-const author = ref("");
-const title = ref("");
+const artist = ref("");
+const album = ref("");
 
 onMounted(() => {
   store.dispatch('vinyl/getVinyls')
 });
 
 // computed
-const vinyls = computed(() => {
-  const vinyls = store.getters["vinyl/getAllVinyls"];
-
+const vinylData = computed(() => {
+  const vinyls: Array<{ id: string, artist: string, album: string }> = store.getters["vinyl/getAllVinyls"];
+  console.log(artist.value, album.value)
   if (!vinyls) return;
 
-  // const _author = author
-  // const _title = title
   const filteredVinyls = vinyls.filter(vinyl => {
-    if (author.value.length > 0) {
-      if (!vinyl.author.toLowerCase().includes(author.value.toLowerCase())) return false;
+    if (artist.value.length > 0) {
+      if (!vinyl.artist.toLowerCase().includes(artist.value.toLowerCase())) return false;
     }
-    if (title.value.length > 0) {
-      if (!vinyl.title.toLowerCase().includes(title.value.toLowerCase())) return false;
+    if (album.value.length > 0) {
+      if (!vinyl.album.toLowerCase().includes(album.value.toLowerCase())) return false;
     }
     return true
   })
   return filteredVinyls
 });
+
+const vinyls = ref(vinylData)
 
 const loading = computed(() => {
   return store.getters['vinyl/isLoading']
@@ -46,8 +46,8 @@ const loading = computed(() => {
       <div v-if="!vinyls">No vinyls data</div>
       <div v-else>
         <div class="VinylListContainer__filterContainer">
-          <input class="VinylListContainer__input" type="text" v-model="title" placeholder="Title"/>
-          <input class="VinylListContainer__input" type="text" v-model="author" placeholder="Author"/>
+          <input class="VinylListContainer__input" type="text" v-model="artist" placeholder="Artist"/>
+          <input class="VinylListContainer__input" type="text" v-model="album" placeholder="Album"/>
         </div>
         <VinylList :vinyls="vinyls"/>
       </div>

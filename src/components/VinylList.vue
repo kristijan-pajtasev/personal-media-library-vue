@@ -40,14 +40,12 @@ function handleEdit(id: string) {
 const hasUser = computed(() => {
   return store.getters['user/getUserData']();
 })
-
-const vinyls = ref(props.vinyls);
 </script>
 
 <template>
   <div class="VinylList">
     <ul class="VinylList__list">
-      <li v-for="vinyl in vinyls" :key="vinyl.id" class="VinylList__listItem">
+      <li v-for="vinyl in props.vinyls" :key="vinyl.id" class="VinylList__listItem">
         <div>{{ displayedText(vinyl.artist) }}</div>
         <div>{{ displayedText(vinyl.album) }}</div>
         <div class="VinylList__itemControls" v-if="hasUser">
