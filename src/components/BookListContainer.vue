@@ -30,11 +30,11 @@ const books = computed(() => {
     return true
   })
   return filteredBooks
-})
-//     loading() {
-//       return this.$store.getters['book/isLoading']
-//     }
-//   }
+});
+
+const loading = computed(() => {
+  return store.getters['book/isLoading']
+});
 
 
 // export default {
