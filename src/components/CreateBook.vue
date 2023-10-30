@@ -1,27 +1,49 @@
-<script lang="ts">
-export default {
-  data() {
-    return {
-      title: "",
-      author: "",
-    }
-  },
-  mounted() {
-    console.log("create book component")
-  },
-  methods: {
-    handleSubmit() {
-      console.log("handleSubmit")
-      this.$store.dispatch("book/addBook", {
-        title: this.title,
-        author: this.author,
-        user: this.$store.getters["user/getUserData"]()
-      }).then(() => {
-        this.$router.push({name: "book"})
-      })
-    }
-  }
+<script setup lang="ts">
+import {RouterLink, RouterView} from 'vue-router'
+import {ref, computed, onMounted} from 'vue'
+import {useStore} from 'vuex';
+import {useRouter} from 'vue-router';
+
+const store = useStore();
+const router = useRouter();
+
+const title = ref("");
+const author = ref("");
+
+// functions
+function handleSubmit() {
+  store.dispatch("book/addBook", {
+    title: title.value,
+    author: author.value,
+    user: store.getters["user/getUserData"]()
+  }).then(() => {
+    router.push({name: "book"})
+  })
 }
+
+// export default {
+//   data() {
+//     return {
+//       title: "",
+//       author: "",
+//     }
+//   },
+//   mounted() {
+//     console.log("create book component")
+//   },
+//   methods: {
+//     handleSubmit() {
+//       console.log("handleSubmit")
+//       this.$store.dispatch("book/addBook", {
+//         title: this.title,
+//         author: this.author,
+//         user: this.$store.getters["user/getUserData"]()
+//       }).then(() => {
+//         this.$router.push({name: "book"})
+//       })
+//     }
+//   }
+// }
 </script>
 
 <template>
