@@ -1,41 +1,44 @@
-<script lang="ts">
-export default {
-  data() {
-    return {
-      title: "",
-      author: "",
-      id: ""
-    }
-  },
-  mounted() {
-    const {id} = this.$route.params;
-    const books = this.$store.getters["book/getAllBooks"];
-    if(!books) {
-      this.$store.dispatch("book/getBooks").then(() => {
-        const book = this.$store.getters["book/getBookById"](id);
-        this.author = book.author;
-        this.title = book.title;
-        this.id = book.id;
-      })
-    } else {
-      const book = this.$store.getters["book/getBookById"](id);
-      this.author = book.author;
-      this.title = book.title;
-      this.id = book.id;
-    }
-  },
-  methods: {
-    handleSubmit() {
-      this.$store.dispatch("book/editBook", {
-        title: this.title,
-        author: this.author,
-        id: this.id,
-        user: this.$store.getters["user/getUserData"]()
-      }).then(() => {
-        this.$router.push({name: "book"})
-      })
-    }
+<script setup lang="ts">
+import {ref, onMounted} from 'vue'
+import {useStore} from 'vuex';
+import {useRoute, useRouter} from 'vue-router';
+
+const store = useStore();
+const route = useRoute();
+const router = useRouter();
+
+const title = ref("")
+const author = ref("")
+const id = ref("")
+
+onMounted(() => {
+  const routeId = route.params.id;
+  const books = store.getters["book/getAllBooks"];
+  if (!books) {
+    store.dispatch("book/getBooks").then(() => {
+      const book = store.getters["book/getBookById"](routeId);
+      author.value = book.author;
+      title.value = book.title;
+      id.value = book.id;
+    })
+  } else {
+    const book = store.getters["book/getBookById"](routeId);
+    author.value = book.author;
+    title.value = book.title;
+    id.value = book.id;
   }
+})
+
+// functions
+function handleSubmit() {
+  store.dispatch("book/editBook", {
+    title: title.value,
+    author: author.value,
+    id: id.value,
+    user: store.getters["user/getUserData"]()
+  }).then(() => {
+    router.push({name: "book"})
+  })
 }
 </script>
 
