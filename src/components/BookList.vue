@@ -40,42 +40,6 @@ const hasUser = computed(() => {
 })
 
 const books = ref(props.books);
-// export default {
-//   props: ["books"],
-//   data() {
-//     return {}
-//   },
-//   computed: {
-//     hasUser() {
-//       return this.$store.getters['user/getUserData']()
-//     }
-//   },
-//   methods: {
-//     handleDelete(id) {
-//       this.$store.dispatch("book/deleteBook", {bookId: id, user: this.$store.getters["user/getUserData"]()})
-//           .then(
-//               () => {
-//                 this.$store.dispatch("book/getBooks")
-//               }
-//           )
-//     },
-//     handleEdit(id) {
-//       this.$router.push({name: "editBook", params: {id}})
-//     },
-//     displayedText(text) {
-//       if(!text) return ""
-//       return text
-//           .split(" ")
-//           .map(word => {
-//         if(["a", "an"].includes(word.toLowerCase())) return word;
-//         else {
-//           return `${word[0].toUpperCase()}${word.slice(1)}`
-//         }
-//       })
-//       .join(" ")
-//     }
-//   }
-// }
 </script>
 
 <template>
