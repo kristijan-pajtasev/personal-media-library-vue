@@ -16,7 +16,7 @@ onMounted(() => {
 
 // computed
 const books = computed(() => {
-  const books = store.getters["book/getAllBooks"];
+  const books: Array<{id: string, author: string, title: string}> = store.getters["book/getAllBooks"];
 
   if (!books) return;
 
