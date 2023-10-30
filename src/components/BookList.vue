@@ -38,14 +38,12 @@ function displayedText(text: string) {
 const hasUser = computed(() => {
   return store.getters['user/getUserData']();
 })
-
-const books = ref(props.books);
 </script>
 
 <template>
   <div class="BookList">
     <ul class="BookList__list">
-      <li v-for="book in books" :key="book.id" class="BookList__listItem">
+      <li v-for="book in props.books" :key="book.id" class="BookList__listItem">
         <div>{{ displayedText(book.title) }}</div>
         <div>{{ displayedText(book.author) }}</div>
         <div class="BookList__itemControls" v-if="hasUser">
