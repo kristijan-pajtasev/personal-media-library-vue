@@ -28,7 +28,9 @@ function displayedText(text: string) {
       .split(" ")
       .map(word => {
         if (["a", "an"].includes(word.toLowerCase())) return word;
+        else if (word.replace(/\s+/, "").length < 2) return word;
         else {
+          console.log(word)
           return `${word[0].toUpperCase()}${word.slice(1)}`
         }
       })
