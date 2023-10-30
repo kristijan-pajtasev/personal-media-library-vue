@@ -7,6 +7,9 @@ import {useRouter} from 'vue-router';
 const store = useStore();
 const router = useRouter();
 
+const author = ref("");
+const title = ref("");
+
 // export default {
 //   components: {BookList},
 //   data() {
