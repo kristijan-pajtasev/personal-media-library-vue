@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import {RouterLink, RouterView} from 'vue-router'
-import {ref, computed, onMounted} from 'vue'
+import {ref} from 'vue'
 import {useStore} from 'vuex';
 import {useRouter} from 'vue-router';
 
