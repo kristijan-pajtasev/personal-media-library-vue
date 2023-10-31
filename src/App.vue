@@ -43,6 +43,7 @@ const hasUser = computed(() => {
 header {
   line-height: 1.5;
   max-height: 100vh;
+  width: 100%;
 }
 
 .logo {
@@ -55,6 +56,9 @@ nav {
   font-size: 12px;
   text-align: center;
   margin-top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 nav a.router-link-exact-active {
@@ -78,7 +82,6 @@ nav a:first-of-type {
 
 @media (min-width: 1024px) {
   header {
-    display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
   }
@@ -97,7 +100,8 @@ nav a:first-of-type {
     text-align: left;
     margin-left: -1rem;
     font-size: 1rem;
-
+    display: flex;
+    flex-direction: row;
     padding: 1rem 0;
     margin-top: 1rem;
   }
