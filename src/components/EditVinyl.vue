@@ -24,7 +24,7 @@ onMounted(() => {
       id.value = vinyl.id;
     })
   } else {
-    const vinyl = store.getters["vinyl/getVinylById"](id);
+    const vinyl = store.getters["vinyl/getVinylById"](itemId);
     artist.value = vinyl.artist;
     album.value = vinyl.album;
     id.value = vinyl.id;
