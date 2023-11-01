@@ -12,13 +12,11 @@ const album = ref("");
 const id = ref("");
 
 onMounted(() => {
-  console.log("on mounted")
   const itemId = route.params.id;
   const vinyls = store.getters["vinyl/getAllVinyls"];
   if (!vinyls) {
     store.dispatch("vinyl/getVinyls").then(() => {
       const vinyl = store.getters["vinyl/getVinylById"](itemId);
-      console.log(vinyl)
       artist.value = vinyl.artist;
       album.value = vinyl.album;
       id.value = vinyl.id;
@@ -33,7 +31,6 @@ onMounted(() => {
 
 // functions
 function handleSubmit() {
-  console.log("handleSubmit")
   store.dispatch("vinyl/editVinyl", {
     artist: artist.value,
     album: album.value,
