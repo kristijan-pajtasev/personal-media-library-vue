@@ -74,6 +74,11 @@ const router = createRouter({
       component: () => import('../views/LogInView.vue')
     }
   ]
+});
+
+router.beforeEach((to, from) => {
+  console.log("before each guard")
+  return true
 })
 
 export default router
