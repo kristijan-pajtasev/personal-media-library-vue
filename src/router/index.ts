@@ -43,7 +43,7 @@ const router = createRouter({
           // route level code-splitting
           // this generates a separate chunk (About.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
-          component: () => import('../views/CreateBookView.vue')
+          component: () => import('../components/CreateBook.vue')
         },
         {
           path: ':id/edit',
@@ -52,7 +52,7 @@ const router = createRouter({
           // route level code-splitting
           // this generates a separate chunk (About.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
-          component: () => import('../views/EditBookView.vue')
+          component: () => import('../components/EditBook.vue')
         },
         {
           path: '',
@@ -61,7 +61,7 @@ const router = createRouter({
           // route level code-splitting
           // this generates a separate chunk (About.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
-          component: () => import('../views/BookListView.vue')
+          component: () => import('../components/BookListContainer.vue')
         },
       ]
     },
@@ -79,7 +79,7 @@ const router = createRouter({
           // route level code-splitting
           // this generates a separate chunk (About.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
-          component: () => import('../views/EditVinylView.vue')
+          component: () => import('../components/EditVinyl.vue')
         },
         {
           path: 'create',
@@ -88,7 +88,7 @@ const router = createRouter({
           // route level code-splitting
           // this generates a separate chunk (About.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
-          component: () => import('../views/CreateVinylView.vue')
+          component: () => import('../components/CreateVinyl.vue')
         },
         {
           path: '',
@@ -97,7 +97,7 @@ const router = createRouter({
           // route level code-splitting
           // this generates a separate chunk (About.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
-          component: () => import('../views/VinylListView.vue')
+          component: () => import('../components/VinylListContainer.vue')
         },
       ]
     },
