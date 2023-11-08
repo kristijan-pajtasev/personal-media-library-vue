@@ -21,33 +21,6 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/book/create',
-      name: 'createBook',
-      meta: { authRequired: false },
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/CreateBookView.vue')
-    },
-    {
-      path: '/book/:id/edit',
-      name: 'editBook',
-      meta: { authRequired: true },
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/EditBookView.vue')
-    },
-    {
-      path: '/book',
-      name: 'book',
-      meta: { authRequired: false },
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/BookListView.vue')
-    },
-    {
       path: '/login',
       name: 'login',
       meta: { authRequired: false },
@@ -56,14 +29,42 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/LogInView.vue')
     },
-    // {
-    //   path: '/vinyl',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/BookView.vue'),
-    //   children: []
-    // },
+    {
+      path: '/book',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/BookView.vue'),
+      children: [
+        {
+          path: 'create',
+          name: 'createBook',
+          meta: { authRequired: false },
+          // route level code-splitting
+          // this generates a separate chunk (About.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import('../views/CreateBookView.vue')
+        },
+        {
+          path: ':id/edit',
+          name: 'editBook',
+          meta: { authRequired: true },
+          // route level code-splitting
+          // this generates a separate chunk (About.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import('../views/EditBookView.vue')
+        },
+        {
+          path: '',
+          name: 'book',
+          meta: { authRequired: false },
+          // route level code-splitting
+          // this generates a separate chunk (About.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import('../views/BookListView.vue')
+        },
+      ]
+    },
     {
       path: '/vinyl',
       // route level code-splitting
