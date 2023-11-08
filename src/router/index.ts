@@ -39,24 +39,6 @@ const router = createRouter({
       component: () => import('../views/EditBookView.vue')
     },
     {
-      path: '/vinyl/:id/edit',
-      name: 'editVinyl',
-      meta: { authRequired: true },
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/EditVinylView.vue')
-    },
-    {
-      path: '/vinyl/create',
-      name: 'createVinyl',
-      meta: { authRequired: true },
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/CreateVinylView.vue')
-    },
-    {
       path: '/book',
       name: 'book',
       meta: { authRequired: false },
@@ -66,15 +48,6 @@ const router = createRouter({
       component: () => import('../views/BookListView.vue')
     },
     {
-      path: '/vinyl',
-      name: 'vinyl',
-      meta: { authRequired: false },
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/VinylListView.vue')
-    },
-    {
       path: '/login',
       name: 'login',
       meta: { authRequired: false },
@@ -82,7 +55,44 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/LogInView.vue')
-    }
+    },
+    {
+      path: '/vinyl',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/VinylView.vue'),
+      children: [
+        {
+          path: ':id/edit',
+          name: 'editVinyl',
+          meta: { authRequired: true },
+          // route level code-splitting
+          // this generates a separate chunk (About.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import('../views/EditVinylView.vue')
+        },
+        {
+          path: 'create',
+          name: 'createVinyl',
+          meta: { authRequired: true },
+          // route level code-splitting
+          // this generates a separate chunk (About.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import('../views/CreateVinylView.vue')
+        },
+        {
+          path: '',
+          name: 'vinyl',
+          meta: { authRequired: false },
+          // route level code-splitting
+          // this generates a separate chunk (About.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import('../views/VinylListView.vue')
+        },
+      ]
+    },
+
   ]
 });
 
